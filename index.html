@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Julia Resort Rates</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function handleBookingTypeChange() {
+            let bookingType = document.getElementById("bookingType").value;
+            let walkinOptions = document.getElementById("walkinOptions");
+            let resortExclusiveOptions = document.getElementById("resortExclusiveOptions");
+            let rateInfo = document.getElementById("rateInfo");
+            
+            if (bookingType === "Walkin") {
+                walkinOptions.classList.remove("d-none");
+                resortExclusiveOptions.classList.add("d-none");
+                rateInfo.innerHTML = "";
+            } else if (bookingType === "Resort Exclusive") {
+                resortExclusiveOptions.classList.remove("d-none");
+                walkinOptions.classList.add("d-none");
+                rateInfo.innerHTML = "";
+            } else if (bookingType === "Events Place") {
+                walkinOptions.classList.add("d-none");
+                resortExclusiveOptions.classList.add("d-none");
+                rateInfo.innerHTML = "<p class='mt-3 '>Events Place Rates</p><img src='https://tinypic.host/images/2025/03/28/fiestahall.png' class='img-fluid'>";
+            } else if (bookingType === "Rooms") {
+                walkinOptions.classList.add("d-none");
+                resortExclusiveOptions.classList.add("d-none");
+                rateInfo.innerHTML = "<h3>Room Rates</h3><p class='mt-3 '><strong>A. Barkada Room - ₱4,000.00</strong> <br />Exclusive Place <br />No Aircon <br />Balcony <br />Videoke <br />Tables and chairs <br />4 Single Beds <br />Toilet <br /><br /><strong>B. Small Cabin - ₱1,000.00</strong> <br />Aircondition Room <br />Double-size Bed <br />Toilet and bath <br /><br /><strong>C. Big Cabin - ₱1,500.00</strong> <br />Aircondition Room <br />Double-seize Bed <br />Toilet and bath<br /><br /><strong>D. Room P4 - ₱4,000.00</strong> <br />Fully Aircondition <br />Sofa bed <br />Dining Table <br />1 Room <br />2 Double deck bunker <br /><br /><strong>E. Room P3 - ₱3,000.00</strong> <br />Aircondition Room <br />2 Double-size Bed <br />Toilet and bath</p>";
+            } else if (bookingType === "White House") {
+                walkinOptions.classList.add("d-none");
+                resortExclusiveOptions.classList.add("d-none");
+                rateInfo.innerHTML = "<p class='mt-3 '>White House Rates</p><img src='https://tinypic.host/images/2025/03/28/whitehouse.png' class='img-fluid'>";
+            } else {
+                walkinOptions.classList.add("d-none");
+                resortExclusiveOptions.classList.add("d-none");
+                rateInfo.innerHTML = "";
+            }
+        }
+
+        function handleWalkinTypeChange() {
+            let walkinType = document.getElementById("walkinType").value;
+            let rateInfo = document.getElementById("rateInfo");
+            
+            if (walkinType === "Daytour") {
+                rateInfo.innerHTML = "<p class='mt-3 '>Walkin Swimming rate is P150 during weekdays and P200 during weekends and holidays</p><img src='https://tinypic.host/images/2025/03/28/walkindaytime.jpg' class='img-fluid'>";
+            } else if (walkinType === "Overnight") {
+                rateInfo.innerHTML = "<p class='mt-3 '>Overnight swimming rate is P250 only. Available during Saturday night only</p><img src='https://tinypic.host/images/2025/03/28/overnightwalkin2.jpg' class='img-fluid'>";
+            } else {
+                rateInfo.innerHTML = "";
+            }
+        }
+
+        function handleResortExclusiveChange() {
+            let resortType = document.getElementById("resortExclusiveType").value;
+            let rateInfo = document.getElementById("rateInfo");
+            
+            if (resortType === "Main Resort") {
+                rateInfo.innerHTML = "<p class='mt-3 '>Main Resort Exclusive Rates</p><img src='https://tinypic.host/images/2025/03/28/mainrates.png' class='img-fluid'>";
+            } else if (resortType === "Private Villa") {
+                rateInfo.innerHTML = "<p class='mt-3 '>Private Villa Rates</p><img src='https://tinypic.host/images/2025/03/28/pvrates.png' class='img-fluid'>";
+            } else {
+                rateInfo.innerHTML = "";
+            }
+        }
+    </script>
+</head>
+<body class="container py-4"> 
+  <nav class="navbar bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Villa Julia Resort</span>
+  </div>
+</nav>
+  <div class="container py-4" id='mainbody'>
+    <p><strong>Please select your preferrence:</strong></p>
+    <form class="row g-3 align-items-center">
+        <div class="col-md-3">
+            <label for="bookingType" class="form-label">Booking Type</label>
+            <select id="bookingType" class="form-select" onchange="handleBookingTypeChange()">
+                <option value="">Select</option>
+                <option value="Walkin">Walkin</option>
+                <option value="Resort Exclusive">Resort Exclusive</option>
+                <option value="Events Place">Events Place</option>
+                <option value="Rooms">Rooms</option>
+                <option value="White House">White House</option>
+            </select>
+        </div>
+        
+        <div class="col-md-3 d-none" id="walkinOptions">
+            <label for="walkinType" class="form-label">Walkin Type</label>
+            <select id="walkinType" class="form-select" onchange="handleWalkinTypeChange()">
+                <option value="">Select</option>
+                <option value="Daytour">Daytour</option>
+                <option value="Overnight">Overnight</option>
+            </select>
+        </div>
+        
+        <div class="col-md-3 d-none" id="resortExclusiveOptions">
+            <label for="resortExclusiveType" class="form-label">Which Resort?</label>
+            <select id="resortExclusiveType" class="form-select" onchange="handleResortExclusiveChange()">
+                <option value="">Select</option>
+                <option value="Main Resort">Main Resort</option>
+                <option value="Private Villa">Private Villa</option>
+            </select>
+        </div>
+    </form>
+    
+    <div id="rateInfo" class="mt-4"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
